@@ -1,8 +1,8 @@
 package one.digitalinnovation.ProjetoJavaPadroes.service;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import one.digitalinnovation.ProjetoJavaPadroes.model.Endereco;
 
@@ -13,11 +13,10 @@ import one.digitalinnovation.ProjetoJavaPadroes.model.Endereco;
  * @see <a href="httpsd://viacep.com.br">ViaCEP</a>
  */
 
-@FeignClient(namo = "viacep", url = "https://viacep.com.br/ws")
+@FeignClient(name = "viacep", url = "https://viacep.com.br/ws")
 public interface ViaCepService {
 	
-	// @GetMapping("/{cep}/json/)
-	@RequestMapping(method = RequestMethod.GET, value = "/{cep}/json/")
-	Endereco consultarCep(@PathVariable("cep" String cep);
+	@GetMapping("/{cep}/json/")
+	Endereco consultarCep(@PathVariable("cep") String cep);
 
 }
